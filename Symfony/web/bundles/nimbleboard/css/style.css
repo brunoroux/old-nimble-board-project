@@ -204,6 +204,29 @@ form div div select
   float: left;
   width: 20%;
   margin-left: 2em;
+  margin-bottom: 2em;
   border: 1px solid #999999;
   padding: 0.5em;
+}
+
+.story .text,
+.story .acceptance
+{
+  padding: 0 0.3em;
+  margin: 0 0 0.5em 0;
+}
+
+.story .text
+{
+  background: #E285F2;
+}
+
+.story .acceptance
+{
+  background: #88D180;
+}
+.story .complexity,
+.story .importance
+{
+  font-style: italic;
 }

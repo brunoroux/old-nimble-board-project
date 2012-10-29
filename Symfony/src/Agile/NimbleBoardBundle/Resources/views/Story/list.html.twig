@@ -5,10 +5,13 @@
   <div class="product_backlog">
     {% for story in stories %}
       <div class="story">
-        <p>
+        <p class="text">
           {% trans %}story.asa{% endtrans %} {{ story.textAsA }}<br />
           {% trans %}story.iwant{% endtrans %} {{ story.textIWant }}<br />
           {% trans %}story.for{% endtrans %} {{ story.textFor }}
+        </p>
+        <p class="acceptance">
+          {% trans %}story.acceptance{% endtrans %} {{ story.acceptance }}
         </p>
         <span class="complexity">{% trans %}story.complexity{% endtrans %} {{ story.complexity }}</span>
         <span class="importance">{% trans %}story.importance{% endtrans %} {{ story.importance }}</span>
