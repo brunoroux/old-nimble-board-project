@@ -50,6 +50,10 @@
                 <source>form.submit</source>
                 <target>Save</target>
             </trans-unit>
+            <trans-unit id="13">
+                <source>edit</source>
+                <target>Edit</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

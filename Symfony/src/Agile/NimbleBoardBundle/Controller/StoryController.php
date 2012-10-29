@@ -14,18 +14,27 @@ class StoryController extends Controller
    */
   public function listStoriesAction()
   {
-    $stories = $projects = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->findAll();
+    $stories = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->findAll();
     return $this->render('NimbleBoardBundle:Story:list.html.twig', array('stories' => $stories));
   }
 
   /**
    * Story add form
    */
-  public function AddAction()
+  public function AddOrEditAction($id = false)
   {
+    $router = $this->get('router');
+    if ($id === false) {
+      // Creating a new story
+      $story = new Story();
+      $formAction = $router->generate('_storyAdd');
+    } else {
+      $story = $this->loadExistingStory($id);
+      $formAction = $router->generate('_storyEdit', array('id' => $id));
+    }
+
     $request = $this->getRequest();
     $translator = $this->get('translator');
-    $story = new Story();
     $form = $this->createFormBuilder($story)
       ->add('textAsA', 'text', array('label' => $translator->trans('story.asa')))
       ->add('textIWant', 'text', array('label' => $translator->trans('story.iwant')))
@@ -52,10 +61,32 @@ class StoryController extends Controller
         $this->get('session')->setFlash('notice', $translator->trans('story.saved'));
 
         return new RedirectResponse($this->generateUrl('_productBacklog'));
-        var_dump($story);die;
       }
     }
 
-    return $this->render('NimbleBoardBundle:Story:add.html.twig', array('form' => $form->createView()));
+    return $this->render('NimbleBoardBundle:Story:addOrEdit.html.twig', array('form' => $form->createView(), 'formAction' => $formAction));
+  }
+
+  /**
+   * Story edit form
+   */
+  public function EditAction($id)
+  {
+    $story = $this->loadExistingStory($id);
+  }
+
+  /**
+   * internal function, loads an existing story (if exists) throws an exception otherwise
+   * @param $id
+   * @return \Agile\NimbleBoardBundle\Entity\Story
+   * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+   */
+  protected function loadExistingStory($id)
+  {
+    $story = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->find($id);
+    if (!$story) {
+      throw $this->createNotFoundException('No story found for id '.$id);
+    }
+    return $story;
   }
 }

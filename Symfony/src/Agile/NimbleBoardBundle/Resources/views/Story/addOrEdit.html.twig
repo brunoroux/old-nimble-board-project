@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>{% trans %}story.add{% endtrans %}</h1>
-  <form action="{{ path('_storyAdd') }}" method="POST" id="story_form">
+  <form action="{{ formAction }}" method="POST" id="story_form">
     {{ form_errors(form) }}
     {{ form_widget(form) }}
     <div>

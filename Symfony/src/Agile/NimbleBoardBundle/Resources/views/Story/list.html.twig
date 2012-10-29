@@ -14,7 +14,8 @@
           {% trans %}story.acceptance{% endtrans %} : {{ story.acceptance }}
         </p>
         <span class="complexity">{% trans %}story.complexity{% endtrans %} : {{ story.complexity }}</span>
-        <span class="importance">{% trans %}story.importance{% endtrans %} : {{ story.importance }}</span>
+        <span class="importance">{% trans %}story.importance{% endtrans %} : {{ story.importance }}</span><br />
+        <a href="{{ path('_storyEdit', {id: story.id}) }}">{% trans %}edit{% endtrans %}</a>
       </div>
     {% endfor %}
   </div>

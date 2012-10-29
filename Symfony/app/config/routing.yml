@@ -13,4 +13,8 @@ _productBacklog:
 
 _storyAdd:
   pattern: /story/add
-  defaults: { _controller: NimbleBoardBundle:Story:add }
+  defaults: { _controller: NimbleBoardBundle:Story:addOrEdit }
+
+_storyEdit:
+  pattern: /story/edit/{id}
+  defaults: { _controller: NimbleBoardBundle:Story:addOrEdit }
