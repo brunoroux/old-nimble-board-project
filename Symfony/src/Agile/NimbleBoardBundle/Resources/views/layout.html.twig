@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Nimble Board{% endblock %}</title>
+  <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+  <link rel="stylesheet" href="{{ asset('bundles/nimbleboard/css/style.css') }}" />
+</head>
+<body>
+  <div id="content-wrapper">
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+      <div class="flash-message">
+        <em>{% trans %}notice{% endtrans %}</em>: {{ flashMessage }}
+      </div>
+    {% endfor %}
+
+    <div class="content">
+      {% block content %} {% endblock %}
+    </div>
+  </div>
+</body>
+</html>

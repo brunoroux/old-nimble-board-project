@@ -1,15 +1,15 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     localhost
+    database_host:     svlxs003.global.local
     database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_name:     nimbleboard
+    database_user:     nimbleboard
+    database_password: nimbleboard
 
     mailer_transport:  smtp
     mailer_host:       localhost
     mailer_user:       ~
     mailer_password:   ~
 
-    locale:            en
-    secret:            ThisTokenIsNotSoSecretChangeIt
+    locale:            fr
+    secret:            EzaeP40Nl87p!Q@WzeTs09a
