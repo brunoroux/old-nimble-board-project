@@ -10,6 +10,30 @@
                 <source>notice</source>
                 <target>Notice</target>
             </trans-unit>
+            <trans-unit id="3">
+                <source>Product.backlog</source>
+                <target>Product backlog</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>story.asa</source>
+                <target>As a</target>
+            </trans-unit>
+            <trans-unit id="5">
+               <source>story.iwant</source>
+               <target>I want to</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>story.for</source>
+                <target>For</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>story.complexity</source>
+                <target>Complexity :</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>story.importance</source>
+                <target>Importance :</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

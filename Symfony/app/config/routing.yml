@@ -6,3 +6,7 @@
 _home:
     pattern:  /
     defaults: { _controller: NimbleBoardBundle:Index:index }
+
+_productBacklog:
+  pattern: /product_backlog
+  defaults: { _controller: NimbleBoardBundle:Story:listStories }
