@@ -230,3 +230,15 @@ form div div select
 {
   font-style: italic;
 }
+
+.links
+{
+  clear:both;
+  padding: 0 0 2em 2em;
+}
+
+#story_form label
+{
+  width: 100px;
+}
+

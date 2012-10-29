@@ -66,14 +66,14 @@ class Story
     /**
      * @var \DateTime $start
      *
-     * @ORM\Column(name="start", type="datetime")
+     * @ORM\Column(name="start", type="datetime", nullable=true)
      */
     private $start;
 
     /**
      * @var \DateTime $end
      *
-     * @ORM\Column(name="end", type="datetime")
+     * @ORM\Column(name="end", type="datetime", nullable=true)
      */
     private $end;
 
@@ -94,14 +94,14 @@ class Story
     /**
      * @var integer $posX
      *
-     * @ORM\Column(name="posX", type="integer")
+     * @ORM\Column(name="posX", type="integer", nullable=true)
      */
     private $posX;
 
     /**
      * @var integer $posY
      *
-     * @ORM\Column(name="posY", type="integer")
+     * @ORM\Column(name="posY", type="integer", nullable=true)
      */
     private $posY;
 

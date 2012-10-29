@@ -1,0 +1,12 @@
+{% extends 'NimbleBoardBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>{% trans %}story.add{% endtrans %}</h1>
+  <form action="{{ path('_storyAdd') }}" method="POST" id="story_form">
+    {{ form_errors(form) }}
+    {{ form_widget(form) }}
+    <div>
+      <input type="submit" value="{% trans %}form.submit{% endtrans %}" />
+    </div>
+  </form>
+{% endblock %}

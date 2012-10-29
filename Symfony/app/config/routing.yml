@@ -10,3 +10,7 @@ _home:
 _productBacklog:
   pattern: /product_backlog
   defaults: { _controller: NimbleBoardBundle:Story:listStories }
+
+_storyAdd:
+  pattern: /story/add
+  defaults: { _controller: NimbleBoardBundle:Story:add }

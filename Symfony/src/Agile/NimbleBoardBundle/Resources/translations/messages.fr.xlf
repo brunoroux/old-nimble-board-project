@@ -28,15 +28,27 @@
             </trans-unit>
             <trans-unit id="7">
                 <source>story.complexity</source>
-                <target>Complexité :</target>
+                <target>Complexité</target>
             </trans-unit>
             <trans-unit id="8">
                 <source>story.importance</source>
-                <target>Importance :</target>
+                <target>Importance</target>
             </trans-unit>
             <trans-unit id="9">
                 <source>story.acceptance</source>
-                <target>Acceptation :</target>
+                <target>Acceptation</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>story.add</source>
+                <target>Ajouter une story</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>story.saved</source>
+                <target>Story enregistrée</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>form.submit</source>
+                <target>Enregistrer</target>
             </trans-unit>
         </body>
     </file>
