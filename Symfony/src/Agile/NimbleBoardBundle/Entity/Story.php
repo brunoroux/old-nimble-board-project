@@ -52,14 +52,14 @@ class Story
     /**
      * @var integer $complexity
      *
-     * @ORM\Column(name="complexity", type="integer")
+     * @ORM\Column(name="complexity", type="integer",  nullable=true)
      */
     private $complexity;
 
     /**
      * @var integer $importance
      *
-     * @ORM\Column(name="importance", type="integer")
+     * @ORM\Column(name="importance", type="integer",  nullable=true)
      */
     private $importance;
 

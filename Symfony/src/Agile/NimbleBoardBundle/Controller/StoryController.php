@@ -44,11 +44,13 @@ class StoryController extends Controller
         'label' => $translator->trans('story.complexity'),
         'invalid_message' => $translator->trans('error.integerNeeded'),
         'invalid_message_parameters' => array('%fieldName%' => $translator->trans('story.complexity')),
+        'required' => false,
       ))
       ->add('importance', 'integer', array(
         'label' => $translator->trans('story.importance'),
         'invalid_message' => $translator->trans('error.integerNeeded'),
         'invalid_message_parameters' => array('%fieldName%' => $translator->trans('story.importance')),
+        'required' => false,
       ))
       ->getForm();
 
