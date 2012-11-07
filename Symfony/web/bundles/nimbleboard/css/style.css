@@ -165,16 +165,19 @@ form label
   width: 200px;
 }
 
-form div div
+form div div,
+form fieldset div
 {
   float: left;
   margin: 1em;
+  width: 45%;
 }
 
 form input,
 form textarea
 {
   margin: 1em;
+  width: 20em;
 }
 
 form > div
@@ -185,6 +188,53 @@ form > div
 form div div select
 {
   margin: 0 0.5em 0 0;
+}
+
+form #form_complexity,
+form #form_importance
+{
+  width: 50px;
+}
+
+form input[type=submit],
+form input[type=button]
+{
+  width: auto;
+}
+
+form fieldset
+{
+  border: 1px solid #666666;
+  margin-bottom: 2em;
+}
+
+.form_errors
+{
+  background: #ff6666;
+  margin-bottom: 2em;
+}
+
+.form_errors ul li
+{
+  padding-top: 1em;
+  padding-bottom: 0;
+}
+
+.form_errors ul
+{
+  border-left: 1px solid #900000;
+  border-right: 1px solid #900000;
+}
+
+.form_errors ul:first-child
+{
+  border-top: 1px solid #900000;
+}
+
+.form_errors ul:last-child
+{
+  padding-bottom: 1em;
+  border-bottom: 1px solid #900000;
 }
 
 #project_detail
@@ -206,6 +256,7 @@ form div div select
   margin-left: 2em;
   margin-bottom: 2em;
   border: 1px solid #999999;
+  background: #fff891;
   padding: 0.5em;
 }
 
@@ -214,6 +265,7 @@ form div div select
 {
   padding: 0 0.3em;
   margin: 0 0 0.5em 0;
+  border: 1px solid #999999;
 }
 
 .story .text

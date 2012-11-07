@@ -54,6 +54,26 @@
                 <source>edit</source>
                 <target>Modifier</target>
             </trans-unit>
+            <trans-unit id="14">
+                <source>storystatus.todo</source>
+                <target>A Faire</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>storystatus.inprogress</source>
+                <target>En Cours</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>storystatus.done</source>
+                <target>Fait</target>
+            </trans-unit>
+            <trans-unit id="17">
+              <source>error.integerNeeded</source>
+              <target>%fieldName% doit être un nombre</target>
+            </trans-unit>
+            <trans-unit id="18">
+              <source>form.cancel</source>
+              <target>Annuler</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

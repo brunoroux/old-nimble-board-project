@@ -36,12 +36,20 @@ class StoryController extends Controller
     $request = $this->getRequest();
     $translator = $this->get('translator');
     $form = $this->createFormBuilder($story)
-      ->add('textAsA', 'text', array('label' => $translator->trans('story.asa')))
-      ->add('textIWant', 'text', array('label' => $translator->trans('story.iwant')))
-      ->add('textFor', 'text', array('label' => $translator->trans('story.for')))
-      ->add('acceptance', 'text', array('label' => $translator->trans('story.acceptance')))
-      ->add('complexity', 'integer', array('label' => $translator->trans('story.complexity')))
-      ->add('importance', 'integer', array('label' => $translator->trans('story.importance')))
+      ->add('textAsA', 'textarea', array('label' => $translator->trans('story.asa')))
+      ->add('textIWant', 'textarea', array('label' => $translator->trans('story.iwant')))
+      ->add('textFor', 'textarea', array('label' => $translator->trans('story.for')))
+      ->add('acceptance', 'textarea', array('label' => $translator->trans('story.acceptance')))
+      ->add('complexity', 'integer', array(
+        'label' => $translator->trans('story.complexity'),
+        'invalid_message' => $translator->trans('error.integerNeeded'),
+        'invalid_message_parameters' => array('%fieldName%' => $translator->trans('story.complexity')),
+      ))
+      ->add('importance', 'integer', array(
+        'label' => $translator->trans('story.importance'),
+        'invalid_message' => $translator->trans('error.integerNeeded'),
+        'invalid_message_parameters' => array('%fieldName%' => $translator->trans('story.importance')),
+      ))
       ->getForm();
 
     if ($request->isMethod('POST')) {

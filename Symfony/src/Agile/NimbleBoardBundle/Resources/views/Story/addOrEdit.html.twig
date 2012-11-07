@@ -1,12 +1,51 @@
 {% extends 'NimbleBoardBundle::layout.html.twig' %}
 
 {% block content %}
-  <h1>{% trans %}story.add{% endtrans %}</h1>
+  <h1 xmlns="http://www.w3.org/1999/html">{% trans %}story.add{% endtrans %}</h1>
   <form action="{{ formAction }}" method="POST" id="story_form">
-    {{ form_errors(form) }}
+    <div class="form_errors">
+      {{ form_errors(form.textAsA) }}
+      {{ form_errors(form.textIWant) }}
+      {{ form_errors(form.textFor) }}
+      {{ form_errors(form.acceptance) }}
+      {{ form_errors(form.complexity) }}
+      {{ form_errors(form.importance) }}
+      {{ form_errors(form) }}
+    </div>
+    <fieldset>
+      <div>
+        {{ form_label(form.textAsA) }}
+        {{ form_widget(form.textAsA) }}
+      </div>
+      <div>
+        {{ form_label(form.textIWant) }}
+        {{ form_widget(form.textIWant) }}
+      </div>
+      <div>
+        {{ form_label(form.textFor) }}
+        {{ form_widget(form.textFor) }}
+      </div>
+    </fieldset>
+    <fieldset>
+      <div>
+        {{ form_label(form.acceptance) }}
+        {{ form_widget(form.acceptance) }}
+      </div>
+    </fieldset>
+    <fieldset>
+      <div>
+        {{ form_label(form.complexity) }}
+        {{ form_widget(form.complexity) }}
+      </div>
+      <div>
+        {{ form_label(form.importance) }}
+        {{ form_widget(form.importance) }}
+      </div>
+    </fieldset>
     {{ form_widget(form) }}
     <div>
       <input type="submit" value="{% trans %}form.submit{% endtrans %}" />
+      <input type="button" value="{% trans %}form.cancel{% endtrans %}" onclick="window.location.href='{{ path('_productBacklog') }}';" />
     </div>
   </form>
 {% endblock %}

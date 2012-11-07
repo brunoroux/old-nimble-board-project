@@ -2,6 +2,9 @@
 
 {% block content %}
   <h1>{% trans %}Product.backlog{% endtrans %}</h1>
+  <div class="links">
+    <a href="{{ path('_storyAdd') }}">{% trans %}story.add{% endtrans %}</a>
+  </div>
   <div class="product_backlog">
     {% for story in stories %}
       <div class="story">
@@ -18,8 +21,5 @@
         <a href="{{ path('_storyEdit', {id: story.id}) }}">{% trans %}edit{% endtrans %}</a>
       </div>
     {% endfor %}
-  </div>
-  <div class="links">
-    <a href="{{ path('_storyAdd') }}">{% trans %}story.add{% endtrans %}</a>
   </div>
 {% endblock %}
