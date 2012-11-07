@@ -15,7 +15,8 @@ class StoryController extends Controller
   public function listStoriesAction()
   {
     $stories = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->findAll();
-    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('stories' => $stories));
+    $globalComplexity = $this->getComplexitySum($stories);
+    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('stories' => $stories, 'globalComplexity' => $globalComplexity));
   }
 
   /**
@@ -121,5 +122,20 @@ class StoryController extends Controller
       throw $this->createNotFoundException('No story found for id '.$id);
     }
     return $story;
+  }
+
+  /**
+   * calculates the sum of all complexities in product backlog
+   * @param $stories
+   * @return int
+   */
+  protected function getComplexitySum($stories)
+  {
+    $complexity = 0;
+    foreach($stories as $story)
+    {
+      $complexity += $story->getComplexity();
+    }
+    return $complexity;
   }
 }

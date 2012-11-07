@@ -86,6 +86,10 @@
               <source>story.deleteConfirm</source>
               <target>Etes-vous sur de vouloir supprimer cette story ?</target>
             </trans-unit>
+            <trans-unit id="22">
+              <source>productBacklog.globalComplexity</source>
+              <target>Complexité globale du Product backlog</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

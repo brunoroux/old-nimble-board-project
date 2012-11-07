@@ -5,6 +5,11 @@
   <div class="links">
     <a class="button" href="{{ path('_storyAdd') }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}story.add{% endtrans %}" /> {% trans %}story.add{% endtrans %}</a>
   </div>
+  {% if globalComplexity != 0 %}
+    <div class="product_backlog_complexity">
+      {% trans %}productBacklog.globalComplexity{% endtrans %} : {{ globalComplexity }}
+    </div>
+  {% endif %}
   <div class="product_backlog">
     {% for story in stories %}
       <div class="story">
