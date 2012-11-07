@@ -84,6 +84,29 @@ class StoryController extends Controller
   }
 
   /**
+   * Story delete action
+   */
+  public function deleteAction($id, $confirm = false)
+  {
+    $story = $this->loadExistingStory($id);
+
+    if ($confirm === false) {
+      return $this->render('NimbleBoardBundle:Story:delete.html.twig', array('story' => $story));
+    } else {
+      $em = $this->getDoctrine()->getManager();
+      $em->remove($story);
+      $em->flush();
+
+      $translator = $this->get('translator');
+      $this->get('session')->setFlash('notice', $translator->trans('story.deleted'));
+
+      return new RedirectResponse($this->generateUrl('_productBacklog'));
+    }
+
+
+  }
+
+  /**
    * internal function, loads an existing story (if exists) throws an exception otherwise
    * @param $id
    * @return \Agile\NimbleBoardBundle\Entity\Story

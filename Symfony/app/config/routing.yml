@@ -18,3 +18,11 @@ _storyAdd:
 _storyEdit:
   pattern: /story/edit/{id}
   defaults: { _controller: NimbleBoardBundle:Story:addOrEdit }
+
+_storyDelete:
+  pattern: /story/delete/{id}
+  defaults: { _controller: NimbleBoardBundle:Story:delete, confirm: false }
+
+_storyDeleteConfirm:
+  pattern: /story/delete/{id}/confirm
+  defaults: { _controller: NimbleBoardBundle:Story:delete, confirm: true }

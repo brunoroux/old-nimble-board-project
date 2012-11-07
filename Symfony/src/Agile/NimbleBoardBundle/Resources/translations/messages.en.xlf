@@ -74,6 +74,18 @@
               <source>form.cancel</source>
               <target>Cancel</target>
             </trans-unit>
+            <trans-unit id="19">
+              <source>delete</source>
+              <target>Delete</target>
+            </trans-unit>
+            <trans-unit id="20">
+              <source>story.deleted</source>
+              <target>Story deleted</target>
+            </trans-unit>
+            <trans-unit id="21">
+              <source>story.deleteConfirm</source>
+              <target>Do you really want to delete this story ?</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

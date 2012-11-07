@@ -294,3 +294,55 @@ form fieldset
   width: 100px;
 }
 
+.button
+{
+  background-color: #D7E5F5;
+  background-image: -moz-linear-gradient(center top , #D7E5F5, #CBE0F5);
+  border-color: #ABBBCC #A7B6C7 #A1AFBF;
+  border-radius: 12px 12px 12px 12px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 0 0 white inset;
+  color: #1A3E66;
+  font: 11px/1 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  padding: 0.3em 1em;
+  text-align: center;
+  text-shadow: 0 1px 1px #FFFFFF;
+  display: inline-block;
+  margin: 0.5em 0;
+  line-height: 1.6em;
+}
+
+.button:hover {
+  background-color: #CCD9E8;
+  background-image: -moz-linear-gradient(center top , #CCD9E8, #C1D4E8);
+  border-color: #A1AFBF #9CAABA #96A3B3;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 0 0 #F2F2F2 inset;
+  color: #163659;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button:active {
+  border: 1px solid #8C98A7;
+  box-shadow: 0 0 4px 2px #ABBCCF inset, 0 0 1px 0 #EEEEEE;
+  text-decoration: none;
+}
+
+.button img {
+  display:inline;
+  vertical-align: middle;
+  margin-right: 0.2em;
+}
+
+.centered {
+  text-align: center;
+}
+
+
+.space_button
+{
+  margin-left:1.5em;
+}
