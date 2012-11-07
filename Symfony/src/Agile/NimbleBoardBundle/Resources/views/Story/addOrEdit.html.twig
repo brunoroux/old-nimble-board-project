@@ -1,7 +1,7 @@
 {% extends 'NimbleBoardBundle::layout.html.twig' %}
 
 {% block content %}
-  <h1 xmlns="http://www.w3.org/1999/html">{% trans %}story.add{% endtrans %}</h1>
+  <h1>{% trans %}story.add{% endtrans %}</h1>
   <form action="{{ formAction }}" method="POST" id="story_form">
     <div class="form_errors">
       {{ form_errors(form.textAsA) }}
@@ -44,8 +44,8 @@
     </fieldset>
     {{ form_widget(form) }}
     <div>
-      <input type="submit" value="{% trans %}form.submit{% endtrans %}" />
-      <input type="button" value="{% trans %}form.cancel{% endtrans %}" onclick="window.location.href='{{ path('_productBacklog') }}';" />
+      <a href="javascript:document.getElementById('story_form').submit();" class="button"><img src="{{ asset('bundles/nimbleboard/images/save.png') }}" alt="{% trans %}form.submit{% endtrans %}" /> {% trans %}form.submit{% endtrans %}</a>
+      <a href="{{ path('_productBacklog') }}" class="button space_button"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}form.cancel{% endtrans %}</a>
     </div>
   </form>
 {% endblock %}

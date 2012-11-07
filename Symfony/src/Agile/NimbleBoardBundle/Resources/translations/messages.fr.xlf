@@ -74,6 +74,18 @@
               <source>form.cancel</source>
               <target>Annuler</target>
             </trans-unit>
+            <trans-unit id="19">
+              <source>delete</source>
+              <target>Supprimer</target>
+            </trans-unit>
+            <trans-unit id="20">
+              <source>story.deleted</source>
+              <target>La story a été supprimée</target>
+            </trans-unit>
+            <trans-unit id="21">
+              <source>story.deleteConfirm</source>
+              <target>Etes-vous sur de vouloir supprimer cette story ?</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

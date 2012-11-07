@@ -3,7 +3,7 @@
 {% block content %}
   <h1>{% trans %}Product.backlog{% endtrans %}</h1>
   <div class="links">
-    <a href="{{ path('_storyAdd') }}">{% trans %}story.add{% endtrans %}</a>
+    <a class="button" href="{{ path('_storyAdd') }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}story.add{% endtrans %}" /> {% trans %}story.add{% endtrans %}</a>
   </div>
   <div class="product_backlog">
     {% for story in stories %}
@@ -18,7 +18,8 @@
         </p>
         <span class="complexity">{% trans %}story.complexity{% endtrans %} : {{ story.complexity }}</span>
         <span class="importance">{% trans %}story.importance{% endtrans %} : {{ story.importance }}</span><br />
-        <a href="{{ path('_storyEdit', {id: story.id}) }}">{% trans %}edit{% endtrans %}</a>
+        <a class="button edit_story" href="{{ path('_storyEdit', {id: story.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/edit.png') }}" alt="{% trans %}edit{% endtrans %}" /> {% trans %}edit{% endtrans %}</a>
+        <a class="button delete_story space_button" href="{{ path('_storyDelete', {id: story.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
       </div>
     {% endfor %}
   </div>
