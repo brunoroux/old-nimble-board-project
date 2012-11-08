@@ -10,9 +10,14 @@
       {% trans %}productBacklog.globalComplexity{% endtrans %} : {{ globalComplexity }}
     </div>
   {% endif %}
-  <div class="product_backlog">
+  <div class="product_backlog ui-widget-content" style="min-height: {{ minheight }}px;">
     {% for story in stories %}
-      <div class="story">
+      {% if story.posX != '' or story.posY != '' %}
+        {% set style = 'position:relative;left:' ~ story.posX ~ 'px;top:' ~ story.posY ~ 'px;' %}
+      {% else %}
+        {% set style = 'margin-left: 2em; margin-bottom: 2em;' %}
+      {% endif %}
+      <div class="story" style="{{ style }}" id="story_{{ story.id }}">
         <p class="text">
           {% trans %}story.asa{% endtrans %} {{ story.textAsA }}<br />
           {% trans %}story.iwant{% endtrans %} {{ story.textIWant }}<br />
@@ -32,4 +37,8 @@
       </div>
     {% endfor %}
   </div>
+  <script type="text/javascript">
+    var minheight = {{ minheight }};
+    var setCoordinatesUrl = '{{ path('_storySetCoordinates') }}';
+  </script>
 {% endblock %}

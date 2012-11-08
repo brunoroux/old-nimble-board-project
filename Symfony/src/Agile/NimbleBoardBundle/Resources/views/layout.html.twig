@@ -5,6 +5,7 @@
   <title>{% block title %}Nimble Board{% endblock %}</title>
   <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
   <link rel="stylesheet" href="{{ asset('bundles/nimbleboard/css/style.css') }}" />
+  <link rel="stylesheet" href="{{ asset('bundles/nimbleboard/css/jquery-ui.css') }}" />
 </head>
 <body>
   <div id="content-wrapper">
@@ -18,5 +19,8 @@
       {% block content %} {% endblock %}
     </div>
   </div>
+  <script type="text/javascript" src="{{ asset('bundles/nimbleboard/js/jquery.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/nimbleboard/js/jquery-ui.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('bundles/nimbleboard/js/dragndrop.js') }}"></script>
 </body>
 </html>

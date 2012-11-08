@@ -26,3 +26,7 @@ _storyDelete:
 _storyDeleteConfirm:
   pattern: /story/delete/{id}/confirm
   defaults: { _controller: NimbleBoardBundle:Story:delete, confirm: true }
+
+_storySetCoordinates:
+  pattern: /story/setCoordinates
+  defaults: { _controller: NimbleBoardBundle:Story:setCoordinates }

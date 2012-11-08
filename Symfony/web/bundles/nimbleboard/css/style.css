@@ -253,11 +253,11 @@ form fieldset
 {
   float: left;
   width: 20%;
-  margin-left: 2em;
-  margin-bottom: 2em;
   border: 1px solid #999999;
   background: #fff891;
   padding: 0.5em;
+  font-size: 10px;
+  cursor: move;
 }
 
 .story .text,
@@ -352,4 +352,10 @@ form fieldset
   margin: 0 2em 2em 2em;
   padding: 1em;
   background: #fff891;
+}
+
+.product_backlog
+{
+  margin: 0 2em 1em 2em;
+  border: 1px dashed #666666;
 }

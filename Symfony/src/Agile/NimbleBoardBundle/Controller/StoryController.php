@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Agile\NimbleBoardBundle\Entity\Story;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class StoryController extends Controller
 {
@@ -16,7 +17,14 @@ class StoryController extends Controller
   {
     $stories = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->findAll();
     $globalComplexity = $this->getComplexitySum($stories);
-    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('stories' => $stories, 'globalComplexity' => $globalComplexity));
+    if ($this->hasPositionedStories($stories)) {
+      $minheight = $this->getMaxStoryOffset($stories) + 300;
+    } else {
+      // Par défaut on considère qu'on peut mettre 4 stories par ligne et que chaque story n'excède pas 300px de hauteur
+      // on devrait pas être trop loin de la réalité, a voir à l'usage
+      $minheight = ceil(count($stories) / 4) * 300;
+    }
+    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('stories' => $stories, 'globalComplexity' => $globalComplexity, 'minheight' => $minheight));
   }
 
   /**
@@ -105,8 +113,25 @@ class StoryController extends Controller
 
       return new RedirectResponse($this->generateUrl('_productBacklog'));
     }
+  }
 
+  public function setCoordinatesAction() {
+    $request = $this->getRequest();
+    $id = $request->query->get('id');
+    $story = $this->loadExistingStory($id);
+    $left = $request->query->get('left');
+    $top = $request->query->get('top');
 
+    $story->setPosX($left);
+    $story->setPosY($top);
+
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($story);
+    $em->flush();
+
+    $response = new Response(json_encode(array('success' => true, 'id' => $id, 'coordinates' => array('left' => $left, 'top' => $top))));
+    $response->headers->set('Content-Type', 'application/json');
+    return $response;
   }
 
   /**
@@ -137,5 +162,35 @@ class StoryController extends Controller
       $complexity += $story->getComplexity();
     }
     return $complexity;
+  }
+
+  /**
+   * determines wether at least 1 story has been dragged
+   * @param $stories
+   * @return bool
+   */
+  protected function hasPositionedStories($stories) {
+    $return = false;
+    foreach ($stories as $story) {
+      if ($story->getPosX() !== null || $story->getPosY() !== null) {
+        $return = true;
+      }
+    }
+    return $return;
+  }
+
+  /**
+   * determines the maximum offset of the stories
+   * @param $stories
+   * @return int
+   */
+  protected function getMaxStoryOffset($stories) {
+    $max = 0;
+    foreach($stories as $story) {
+      if ($story->getPosY() > $max) {
+        $max = $story->getPosY();
+      }
+    }
+    return $max;
   }
 }
