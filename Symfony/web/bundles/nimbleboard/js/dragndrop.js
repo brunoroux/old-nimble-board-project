@@ -9,6 +9,7 @@ $(function(){
   });
   $('.story').draggable({
     containment: '.product_backlog',
+    stack: '.story',
     stop: function() {
       var left = parseInt($(this).css('left'));
       var top = parseInt($(this).css('top'));
