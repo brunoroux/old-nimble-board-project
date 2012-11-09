@@ -16,7 +16,7 @@ class ProjectRepository extends EntityRepository
   {
     $query = $this->getEntityManager()->createQuery('
       select p, s from NimbleBoardBundle:Project p
-      join p.stories s
+      left join p.stories s
       where p.id = :id
     ')->setParameter('id', $id);
     try {
