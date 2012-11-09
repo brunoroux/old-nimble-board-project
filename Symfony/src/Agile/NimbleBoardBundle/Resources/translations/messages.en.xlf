@@ -90,6 +90,34 @@
               <source>productBacklog.globalComplexity</source>
               <target>Product backlog global complexity</target>
             </trans-unit>
+            <trans-unit id="23">
+              <source>project.list</source>
+              <target>Projects list</target>
+            </trans-unit>
+            <trans-unit id="24">
+              <source>project.add</source>
+              <target>Add a new project</target>
+            </trans-unit>
+            <trans-unit id="25">
+              <source>project.name</source>
+              <target>Name</target>
+            </trans-unit>
+            <trans-unit id="26">
+              <source>project.description</source>
+              <target>Description</target>
+            </trans-unit>
+            <trans-unit id="27">
+              <source>project.start</source>
+              <target>Start date</target>
+            </trans-unit>
+            <trans-unit id="28">
+              <source>project.end</source>
+              <target>End date</target>
+            </trans-unit>
+            <trans-unit id="29">
+              <source>project.saved</source>
+              <target>Project saved</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

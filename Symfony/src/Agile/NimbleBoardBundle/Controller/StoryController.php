@@ -4,6 +4,7 @@ namespace Agile\NimbleBoardBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Agile\NimbleBoardBundle\Entity\Story;
+use Agile\NimbleBoardBundle\Entity\Project;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,32 +14,38 @@ class StoryController extends Controller
   /**
    * Product backlog action
    */
-  public function listStoriesAction()
+  public function listStoriesAction($projectId)
   {
-    $stories = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->findAll();
-    $globalComplexity = $this->getComplexitySum($stories);
-    if ($this->hasPositionedStories($stories)) {
-      $minheight = $this->getMaxStoryOffset($stories) + 300;
+    $project = $this->getDoctrine()->getRepository('NimbleBoardBundle:Project')->findOneByIdJoinedToStories($projectId);
+    $globalComplexity = $this->getComplexitySum($project->getStories());
+    if ($this->hasPositionedStories($project->getStories())) {
+      $minheight = $this->getMaxStoryOffset($project->getStories()) + 300;
     } else {
       // Par défaut on considère qu'on peut mettre 4 stories par ligne et que chaque story n'excède pas 300px de hauteur
       // on devrait pas être trop loin de la réalité, a voir à l'usage
-      $minheight = ceil(count($stories) / 4) * 300;
+      $minheight = ceil(count($project->getStories()) / 4) * 300;
+      if ($minheight < 300) {
+        $minheight = 300;
+      }
     }
-    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('stories' => $stories, 'globalComplexity' => $globalComplexity, 'minheight' => $minheight));
+    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('project' => $project, 'globalComplexity' => $globalComplexity, 'minheight' => $minheight));
   }
 
   /**
    * Story add form
    */
-  public function AddOrEditAction($id = false)
+  public function AddOrEditAction($id = false, $projectId = false)
   {
     $router = $this->get('router');
     if ($id === false) {
       // Creating a new story
       $story = new Story();
-      $formAction = $router->generate('_storyAdd');
+      $project = $this->getDoctrine()->getRepository('NimbleBoardBundle:Project')->find($projectId);
+      $story->setProject($project);
+      $formAction = $router->generate('_storyAdd', array('projectId' => $projectId));
     } else {
-      $story = $this->loadExistingStory($id);
+      $story = $this->loadExistingStory($id, true);
+      $project = $story->getProject();
       $formAction = $router->generate('_storyEdit', array('id' => $id));
     }
 
@@ -79,19 +86,11 @@ class StoryController extends Controller
 
         $this->get('session')->setFlash('notice', $translator->trans('story.saved'));
 
-        return new RedirectResponse($this->generateUrl('_productBacklog'));
+        return new RedirectResponse($this->generateUrl('_productBacklog', array('projectId' => $project->getId())));
       }
     }
 
-    return $this->render('NimbleBoardBundle:Story:addOrEdit.html.twig', array('form' => $form->createView(), 'formAction' => $formAction));
-  }
-
-  /**
-   * Story edit form
-   */
-  public function EditAction($id)
-  {
-    $story = $this->loadExistingStory($id);
+    return $this->render('NimbleBoardBundle:Story:addOrEdit.html.twig', array('form' => $form->createView(), 'formAction' => $formAction, 'project' => $project));
   }
 
   /**
@@ -99,7 +98,7 @@ class StoryController extends Controller
    */
   public function deleteAction($id, $confirm = false)
   {
-    $story = $this->loadExistingStory($id);
+    $story = $this->loadExistingStory($id, true);
 
     if ($confirm === false) {
       return $this->render('NimbleBoardBundle:Story:delete.html.twig', array('story' => $story));
@@ -111,7 +110,7 @@ class StoryController extends Controller
       $translator = $this->get('translator');
       $this->get('session')->setFlash('notice', $translator->trans('story.deleted'));
 
-      return new RedirectResponse($this->generateUrl('_productBacklog'));
+      return new RedirectResponse($this->generateUrl('_productBacklog', array('projectId' => $story->getProject()->getId())));
     }
   }
 
@@ -140,9 +139,14 @@ class StoryController extends Controller
    * @return \Agile\NimbleBoardBundle\Entity\Story
    * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
    */
-  protected function loadExistingStory($id)
+  protected function loadExistingStory($id, $withProject = false)
   {
-    $story = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->find($id);
+    $repository = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story');
+    if ($withProject === true) {
+      $story = $repository->findOneByIdJoinedToProject($id);
+    } else {
+      $story = $repository->find($id);
+    }
     if (!$story) {
       throw $this->createNotFoundException('No story found for id '.$id);
     }

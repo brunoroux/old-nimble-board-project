@@ -1,0 +1,39 @@
+{% extends 'NimbleBoardBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>{% trans %}project.add{% endtrans %}</h1>
+  <form action="{{ formAction }}" method="POST" id="project_form">
+    <div class="form_errors">
+      {{ form_errors(form.name) }}
+      {{ form_errors(form.description) }}
+      {{ form_errors(form.start) }}
+      {{ form_errors(form.end) }}
+      {{ form_errors(form) }}
+    </div>
+    <fieldset>
+      <div>
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+      </div>
+      <div>
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+      </div>
+    </fieldset>
+    <fieldset>
+      <div>
+        {{ form_label(form.start) }}
+        {{ form_widget(form.start) }}
+      </div>
+      <div>
+        {{ form_label(form.end) }}
+        {{ form_widget(form.end) }}
+      </div>
+    </fieldset>
+    {{ form_widget(form) }}
+    <div>
+      <a href="javascript:document.getElementById('project_form').submit();" class="button"><img src="{{ asset('bundles/nimbleboard/images/save.png') }}" alt="{% trans %}form.submit{% endtrans %}" /> {% trans %}form.submit{% endtrans %}</a>
+      <a href="{{ path('_projectList') }}" class="button space_button"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}form.cancel{% endtrans %}</a>
+    </div>
+  </form>
+{% endblock %}

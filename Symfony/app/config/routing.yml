@@ -5,14 +5,14 @@
 
 _home:
     pattern:  /
-    defaults: { _controller: NimbleBoardBundle:Index:index }
+    defaults: { _controller: NimbleBoardBundle:Project:list }
 
 _productBacklog:
-  pattern: /product_backlog
+  pattern: /project/{projectId}/product_backlog
   defaults: { _controller: NimbleBoardBundle:Story:listStories }
 
 _storyAdd:
-  pattern: /story/add
+  pattern: /project/{projectId}/story/add
   defaults: { _controller: NimbleBoardBundle:Story:addOrEdit }
 
 _storyEdit:
@@ -30,3 +30,11 @@ _storyDeleteConfirm:
 _storySetCoordinates:
   pattern: /story/setCoordinates
   defaults: { _controller: NimbleBoardBundle:Story:setCoordinates }
+
+_projectList:
+  pattern: /projects
+  defaults: { _controller: NimbleBoardBundle:Project:list }
+
+_projectAdd:
+  pattern: /project/add
+  defaults: { _controller: NimbleBoardBundle:Project:addOrEdit }

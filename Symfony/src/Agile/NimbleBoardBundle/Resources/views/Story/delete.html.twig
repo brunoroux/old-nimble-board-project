@@ -6,6 +6,6 @@
 
   <div class="links centered">
     <a class="button" href="{{ path('_storyDeleteConfirm', {id: story.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
-    <a class="button space_button" href="{{ path('_productBacklog') }}"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}cancel{% endtrans %}</a>
+    <a class="button space_button" href="{{ path('_productBacklog', {projectId: story.project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}cancel{% endtrans %}</a>
   </div>
 {% endblock %}

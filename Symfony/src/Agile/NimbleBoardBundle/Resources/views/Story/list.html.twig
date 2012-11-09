@@ -3,7 +3,7 @@
 {% block content %}
   <h1>{% trans %}Product.backlog{% endtrans %}</h1>
   <div class="links">
-    <a class="button" href="{{ path('_storyAdd') }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}story.add{% endtrans %}" /> {% trans %}story.add{% endtrans %}</a>
+    <a class="button" href="{{ path('_storyAdd', {projectId: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}story.add{% endtrans %}" /> {% trans %}story.add{% endtrans %}</a>
   </div>
   {% if globalComplexity != 0 %}
     <div class="product_backlog_complexity">
@@ -11,7 +11,7 @@
     </div>
   {% endif %}
   <div class="product_backlog ui-widget-content" style="min-height: {{ minheight }}px;">
-    {% for story in stories %}
+    {% for story in project.stories %}
       {% if story.posX != '' or story.posY != '' %}
         {% set style = 'position:relative;left:' ~ story.posX ~ 'px;top:' ~ story.posY ~ 'px;' %}
       {% else %}

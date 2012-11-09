@@ -90,6 +90,34 @@
               <source>productBacklog.globalComplexity</source>
               <target>Complexité globale du Product backlog</target>
             </trans-unit>
+            <trans-unit id="23">
+              <source>project.list</source>
+              <target>Liste des projets</target>
+            </trans-unit>
+            <trans-unit id="24">
+              <source>project.add</source>
+              <target>Ajouter un projet</target>
+            </trans-unit>
+            <trans-unit id="25">
+              <source>project.name</source>
+              <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="26">
+              <source>project.description</source>
+              <target>Description</target>
+            </trans-unit>
+            <trans-unit id="27">
+              <source>project.start</source>
+              <target>Date de début</target>
+            </trans-unit>
+            <trans-unit id="28">
+              <source>project.end</source>
+              <target>Date de fin</target>
+            </trans-unit>
+            <trans-unit id="29">
+              <source>project.saved</source>
+              <target>Projet enregistré</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

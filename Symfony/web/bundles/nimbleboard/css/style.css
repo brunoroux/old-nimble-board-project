@@ -70,6 +70,17 @@ h2
 
 }
 
+h2 a
+{
+  color: #ffffff;
+}
+
+h2 a:hover
+{
+  color: #0088CC;
+  text-decoration: none;
+}
+
 p
 {
   line-height:    20px;
@@ -289,7 +300,7 @@ form fieldset
   padding: 0 0 2em 2em;
 }
 
-#story_form label
+form label
 {
   width: 100px;
 }
@@ -358,4 +369,14 @@ form fieldset
 {
   margin: 0 2em 1em 2em;
   border: 1px dashed #666666;
+}
+
+.project_list
+{
+  margin: 0 2em 1em 2em;
+}
+
+.project .end
+{
+  margin-left: 0.5em;
 }

@@ -105,6 +105,13 @@ class Story
      */
     private $posY;
 
+    /**
+     * @var Agile\NimbleBoardBundle\Entity\Project $project
+     *
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="stories")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
+     */
+    private $project;
 
     /**
      * Get id
@@ -390,5 +397,28 @@ class Story
     public function getPosY()
     {
         return $this->posY;
+    }
+
+    /**
+     * Set project
+     *
+     * @param Agile\NimbleBoardBundle\Entity\Project $project
+     * @return Story
+     */
+    public function setProject(\Agile\NimbleBoardBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+    
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return Agile\NimbleBoardBundle\Entity\Project 
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

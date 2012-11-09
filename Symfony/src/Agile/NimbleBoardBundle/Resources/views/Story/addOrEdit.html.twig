@@ -45,7 +45,7 @@
     {{ form_widget(form) }}
     <div>
       <a href="javascript:document.getElementById('story_form').submit();" class="button"><img src="{{ asset('bundles/nimbleboard/images/save.png') }}" alt="{% trans %}form.submit{% endtrans %}" /> {% trans %}form.submit{% endtrans %}</a>
-      <a href="{{ path('_productBacklog') }}" class="button space_button"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}form.cancel{% endtrans %}</a>
+      <a href="{{ path('_productBacklog', {projectId: project.id}) }}" class="button space_button"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}form.cancel{% endtrans %}</a>
     </div>
   </form>
 {% endblock %}
