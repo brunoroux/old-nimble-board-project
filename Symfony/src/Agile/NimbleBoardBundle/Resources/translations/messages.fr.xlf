@@ -118,6 +118,14 @@
               <source>project.saved</source>
               <target>Projet enregistré</target>
             </trans-unit>
+            <trans-unit id="30">
+              <source>project.deleteConfirm</source>
+              <target>Etes-vous sur de vouloir supprimer ce projet ?</target>
+            </trans-unit>
+            <trans-unit id="31">
+              <source>project.deleted</source>
+              <target>Le projet a été supprimé</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

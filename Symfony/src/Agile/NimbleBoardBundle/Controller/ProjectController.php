@@ -21,9 +21,12 @@ class ProjectController extends Controller
       // Creating a new story
       $project = new Project();
       $formAction = $router->generate('_projectAdd');
+      $start = $end = new \DateTime();
     } else {
       $project = $this->loadExistingProject($id);
       $formAction = $router->generate('_projectEdit', array('id' => $id));
+      $start = $project->getStart();
+      $end = $project->getEnd();
     }
 
     $request = $this->getRequest();
@@ -31,8 +34,8 @@ class ProjectController extends Controller
     $form = $this->createFormBuilder($project)
       ->add('name', 'text', array('label' => $translator->trans('project.name')))
       ->add('description', 'textarea', array('label' => $translator->trans('project.description')))
-      ->add('start', 'date', array('label' => $translator->trans('project.start'), 'data' => new \DateTime()))
-      ->add('end', 'date', array('label' => $translator->trans('project.end'), 'data' => new \DateTime()))
+      ->add('start', 'date', array('label' => $translator->trans('project.start'), 'data' => $start))
+      ->add('end', 'date', array('label' => $translator->trans('project.end'), 'data' => $end))
       ->getForm();
 
     if ($request->isMethod('POST')) {
@@ -56,6 +59,23 @@ class ProjectController extends Controller
     }
 
     return $this->render('NimbleBoardBundle:Project:addOrEdit.html.twig', array('form' => $form->createView(), 'formAction' => $formAction));
+  }
+
+  public function deleteAction($id, $confirm = false)
+  {
+    $project = $this->loadExistingProject($id);
+    if ($confirm !== true) {
+      return $this->render('NimbleBoardBundle:Project:delete.html.twig', array('project' => $project));
+    } else {
+      $em = $this->getDoctrine()->getManager();
+      $em->remove($project);
+      $em->flush();
+
+      $translator = $this->get('translator');
+      $this->get('session')->setFlash('notice', $translator->trans('project.deleted'));
+
+      return new RedirectResponse($this->generateUrl('_projectList'));
+    }
   }
 
   protected function loadExistingProject($id)

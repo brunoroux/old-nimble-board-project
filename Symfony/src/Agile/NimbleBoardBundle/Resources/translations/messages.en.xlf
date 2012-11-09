@@ -118,6 +118,14 @@
               <source>project.saved</source>
               <target>Project saved</target>
             </trans-unit>
+            <trans-unit id="30">
+              <source>project.deleteConfirm</source>
+              <target>Do you really want to delete this project ?</target>
+            </trans-unit>
+            <trans-unit id="31">
+              <source>project.deleted</source>
+              <target>Project deleted</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

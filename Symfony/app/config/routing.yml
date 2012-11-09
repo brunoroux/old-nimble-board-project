@@ -38,3 +38,15 @@ _projectList:
 _projectAdd:
   pattern: /project/add
   defaults: { _controller: NimbleBoardBundle:Project:addOrEdit }
+
+_projectEdit:
+  pattern: /project/edit/{id}
+  defaults: { _controller: NimbleBoardBundle:Project:addOrEdit }
+
+_projectDelete:
+  pattern: /project/delete/{id}
+  defaults: { _controller: NimbleBoardBundle:Project:delete, confirm: false }
+
+_projectDeleteConfirm:
+  pattern: /project/delete/{id}/confirm
+  defaults: { _controller: NimbleBoardBundle:Project:delete, confirm: true }
