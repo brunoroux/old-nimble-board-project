@@ -14,7 +14,7 @@
         <span class="end">{% trans %}project.end{% endtrans %} : {{ project.end.format('d/m/y') }}</span>
         <div class="links">
           <a class="button" href="{{ path('_projectEdit', {id: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/edit.png') }}" alt="{% trans %}edit{% endtrans %}" /> {% trans %}edit{% endtrans %}</a>
-          <a class="button" href="{{ path('_projectDelete', {id: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
+          <a class="button space_button" href="{{ path('_projectDelete', {id: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
         </div>
       </div>
     {% endfor %}
