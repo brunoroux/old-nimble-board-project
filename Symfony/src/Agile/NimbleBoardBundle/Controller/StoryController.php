@@ -17,7 +17,7 @@ class StoryController extends Controller
   public function listStoriesAction($projectId)
   {
     $project = $this->getDoctrine()->getRepository('NimbleBoardBundle:Project')->findOneByIdJoinedToStories($projectId);
-    /*$globalComplexity = $this->getComplexitySum($project->getStories());
+    $globalComplexity = $this->getComplexitySum($project->getStories());
     if ($this->hasPositionedStories($project->getStories())) {
       $minheight = $this->getMaxStoryOffset($project->getStories()) + 300;
     } else {
@@ -27,8 +27,7 @@ class StoryController extends Controller
       if ($minheight < 300) {
         $minheight = 300;
       }
-    }*/
-    $globalComplexity = 1; $minheight = 300;
+    }
     return $this->render('NimbleBoardBundle:Story:list.html.twig', array('project' => $project, 'globalComplexity' => $globalComplexity, 'minheight' => $minheight));
   }
 
