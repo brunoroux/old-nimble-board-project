@@ -13,7 +13,7 @@
     </div>
   {% endif %}
   <div class="product_backlog ui-widget-content" style="min-height: {{ minheight }}px;">
-    {% for story in project.stories %}
+    {% for story in stories %}
       {% include 'NimbleBoardBundle:Story:detail.html.twig' with {'useposition': true, 'story': story} %}
     {% endfor %}
   </div>

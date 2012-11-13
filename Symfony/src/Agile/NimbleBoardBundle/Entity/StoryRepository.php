@@ -25,4 +25,17 @@ class StoryRepository extends EntityRepository
       return null;
     }
   }
+
+  /**
+   * User for product backlog : all stories in project which are not in a sprint
+   */
+  public function findByProjectWithoutSprint($projectId)
+  {
+    $query = $this->getEntityManager()->createQuery('
+      select s, p from NimbleBoardBundle:Story s
+      join s.project p
+      where p.id = :projectId and s.sprint is null
+    ')->setParameter(':projectId', $projectId);
+    return $query->getResult();
+  }
 }

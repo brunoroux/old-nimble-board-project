@@ -16,19 +16,20 @@ class StoryController extends Controller
    */
   public function listStoriesAction($projectId)
   {
-    $project = $this->getDoctrine()->getRepository('NimbleBoardBundle:Project')->findOneByIdJoinedToStories($projectId);
-    $globalComplexity = $this->getComplexitySum($project->getStories());
-    if ($this->hasPositionedStories($project->getStories())) {
-      $minheight = $this->getMaxStoryOffset($project->getStories()) + 300;
+    $stories = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->findByProjectWithoutSprint($projectId);
+    $project = $stories[0]->getProject();
+    $globalComplexity = $this->getComplexitySum($stories);
+    if ($this->hasPositionedStories($stories)) {
+      $minheight = $this->getMaxStoryOffset($stories) + 300;
     } else {
       // Par défaut on considère qu'on peut mettre 4 stories par ligne et que chaque story n'excède pas 300px de hauteur
       // on devrait pas être trop loin de la réalité, a voir à l'usage
-      $minheight = ceil(count($project->getStories()) / 4) * 300;
+      $minheight = ceil(count($stories) / 4) * 300;
       if ($minheight < 300) {
         $minheight = 300;
       }
     }
-    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('project' => $project, 'globalComplexity' => $globalComplexity, 'minheight' => $minheight));
+    return $this->render('NimbleBoardBundle:Story:list.html.twig', array('project' => $project, 'stories' => $stories, 'globalComplexity' => $globalComplexity, 'minheight' => $minheight));
   }
 
   /**
