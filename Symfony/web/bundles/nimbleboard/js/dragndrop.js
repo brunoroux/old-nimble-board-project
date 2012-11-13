@@ -1,5 +1,6 @@
 $(function(){
   if ($('#stories_sprint_drag').length > 0) {
+    // Add stories to sprint page
     var pb = $('.product_backlog');
     var sb = $('.sprint_backlog');
     var width = parseInt(pb.css('width'));
@@ -27,7 +28,22 @@ $(function(){
         setStoryTarget(event, ui, 'sprint_backlog');
       }
     });
+  } else if ($('.sprint_backlog').length > 0) {
+    // Sprint backlog page
+    $('.status').sortable({
+      connectWith: '.status',
+      items: '.story',
+      opacity: 0.4,
+      receive: function(event, ui){
+        var id = $(ui.item).attr('id');
+        var numid = id.substr(6);
+        var status = $(event.target).attr('id');
+        setStoryStatus(numid, status);
+      }
+    }).disableSelection();
+
   } else if ($('.product_backlog').length > 0) {
+    // Product backlog page
     var width = parseInt($('.product_backlog').css('width'));
     $('.product_backlog').resizable({
       containment: '.content',
@@ -63,5 +79,25 @@ function setStoryTarget(event, ui, target)
   var numid = id.substr(6);
   $.ajax(setStoryTargetUrl, {
     data: {'storyId': numid, 'sprintId': sprint}
+  });
+}
+
+function setStoryStatus(id, status)
+{
+  switch (status) {
+    case 'status_todo':
+      var statusId = status_todo;
+      break;
+    case 'status_inprogress':
+      var statusId = status_inprogress;
+      break;
+    case 'status_done':
+      var statusId = status_done;
+      break;
+    default:
+      return;
+  }
+  $.ajax(setStoryStatusUrl, {
+    data: {'id': id, 'status': statusId}
   });
 }

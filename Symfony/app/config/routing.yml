@@ -28,8 +28,12 @@ _storyDeleteConfirm:
   defaults: { _controller: NimbleBoardBundle:Story:delete, confirm: true }
 
 _storySetCoordinates:
-  pattern: /story/setCoordinates
+  pattern: /story/setcoordinates
   defaults: { _controller: NimbleBoardBundle:Story:setCoordinates }
+
+_storySetStatus:
+  pattern: /story/setstatus
+  defaults: { _controller: NimbleBoardBundle:Story:setStatus }
 
 _projectList:
   pattern: /projects

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Agile\NimbleBoardBundle\Entity\Sprint;
 use Agile\NimbleBoardBundle\Entity\Project;
+use Agile\NimbleBoardBundle\Constants\StoryStatus;
 
 class SprintController extends Controller
 {
@@ -103,7 +104,14 @@ class SprintController extends Controller
   public function backlogAction($id)
   {
     $sprint = $this->getDoctrine()->getRepository('NimbleBoardBundle:Sprint')->findOneByIdJoinedToStoriesAndProject($id);
-    return $this->render('NimbleBoardBundle:Sprint:backlog.html.twig', array('sprint' => $sprint));
+    $translator = $this->get('translator');
+    $todo = StoryStatus::STATUS_TODO;
+    $text_todo = $translator->trans(StoryStatus::TEXT_TODO);
+    $inprogress = StoryStatus::STATUS_INPROGRESS;
+    $text_inprogress = $translator->trans(StoryStatus::TEXT_INPROGRESS);
+    $done = StoryStatus::STATUS_DONE;
+    $text_done = $translator->trans(StoryStatus::TEXT_DONE);
+    return $this->render('NimbleBoardBundle:Sprint:backlog.html.twig', array('sprint' => $sprint, 'todo' => $todo, 'text_todo' => $text_todo, 'inprogress' => $inprogress, 'text_inprogress' => $text_inprogress, 'done' => $done, 'text_done' => $text_done));
   }
 
   /**

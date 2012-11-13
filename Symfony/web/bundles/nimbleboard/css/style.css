@@ -390,6 +390,7 @@ form label
 
 .sprint_backlog
 {
+  float: left;
   margin: 0 2em 1em 2em;
 }
 
@@ -433,4 +434,19 @@ form label
   min-height: 600px;
   margin: 0 0 2em 2em;
   border: 1px dashed #666666;
+}
+
+.sprint_backlog .status
+{
+  float: left;
+  width: 300px;
+  margin-left: 2em;
+  padding: 1em 0;
+  border: 1px dashed #666666;
+  min-height: 600px;
+}
+
+.sprint_backlog .status_title
+{
+  text-align: center;
 }

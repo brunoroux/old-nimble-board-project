@@ -3,6 +3,8 @@
 namespace Agile\NimbleBoardBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Agile\NimbleBoardBundle\Constants\StoryStatus;
+use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
 
 /**
  * Agile\NimbleBoardBundle\Entity\Story
@@ -120,6 +122,13 @@ class Story
      * @ORM\JoinColumn(name="sprint_id", referencedColumnName="id")
      */
     private $sprint;
+
+    /**
+     * @var integer $status
+     *
+     * @ORM\Column(name="status", type="integer")
+     */
+    private $status;
 
     /**
      * Get id
@@ -451,5 +460,33 @@ class Story
     public function getSprint()
     {
         return $this->sprint;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Story
+     */
+    public function setStatus($status)
+    {
+        if (!array_key_exists($status, StoryStatus::getStatuses())) {
+          throw new InvalidArgumentException('invalid status');
+        }
+
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+
+        return $this->status;
     }
 }

@@ -6,9 +6,42 @@
     <a class="button" href="{{ path('_sprintList', {projectId: sprint.project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/list.png') }}" alt="{% trans %}sprint.list{% endtrans %}" /> {% trans %}sprint.list{% endtrans %}</a>
     <a class="button space_button" href="{{ path('_sprintAddStories', {id: sprint.project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}sprint.addStories{% endtrans %}" /> {% trans %}sprint.addStories{% endtrans %}</a>
   </div>
-  <div class="project_list">
-    {% for story in sprint.stories %}
-      {% include 'NimbleBoardBundle:Story:detail.html.twig' with {'useposition': false, 'story': story} %}
-    {% endfor %}
+  <div class="sprint_backlog">
+    <div id="status_todo" class="status">
+      <div class="status_title">
+        <h2>{{ text_todo }}</h2>
+      </div>
+      {% for story in sprint.stories %}
+        {% if story.status == todo %}
+          {% include 'NimbleBoardBundle:Story:detail.html.twig' with {'useposition': false, 'story': story} %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div id="status_inprogress" class="status">
+      <div class="status_title">
+        <h2>{{ text_inprogress }}</h2>
+      </div>
+      {% for story in sprint.stories %}
+        {% if story.status == inprogress %}
+          {% include 'NimbleBoardBundle:Story:detail.html.twig' with {'useposition': false, 'story': story} %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div id="status_done" class="status">
+      <div class="status_title">
+        <h2>{{ text_done }}</h2>
+      </div>
+      {% for story in sprint.stories %}
+        {% if story.status == done %}
+          {% include 'NimbleBoardBundle:Story:detail.html.twig' with {'useposition': false, 'story': story} %}
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
+  <script type="text/javascript">
+    var status_todo = {{ todo }};
+    var status_inprogress = {{ inprogress }};
+    var status_done = {{ done }};
+    var setStoryStatusUrl = '{{ path('_storySetStatus') }}';
+  </script>
 {% endblock %}

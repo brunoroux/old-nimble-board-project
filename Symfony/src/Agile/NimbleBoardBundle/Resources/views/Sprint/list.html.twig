@@ -4,6 +4,7 @@
   <h1>{% trans %}sprint.list{% endtrans %}</h1>
   <div class="links">
     <a class="button" href="{{ path('_sprintAdd', {'projectId': project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}sprint.add{% endtrans %}" /> {% trans %}sprint.add{% endtrans %}</a>
+    <a class="button space_button" href="{{ path('_productBacklog', {'projectId': project.id}) }}">{% trans %}Product.backlog{% endtrans %}</a>
   </div>
   <div class="sprint_backlog">
     {% set i = 1 %}

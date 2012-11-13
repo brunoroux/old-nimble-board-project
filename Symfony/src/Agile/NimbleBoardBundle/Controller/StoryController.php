@@ -134,6 +134,26 @@ class StoryController extends Controller
   }
 
   /**
+   * set status action (called by an ajax request)
+   */
+  public function setStatusAction() {
+    $request = $this->getRequest();
+    $id = $request->query->get('id');
+    $story = $this->loadExistingStory($id);
+    $status = $request->query->get('status');
+
+    $story->setStatus($status);
+
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($story);
+    $em->flush();
+
+    $response = new Response(json_encode(array('success' => true)));
+    $response->headers->set('Content-Type', 'application/json');
+    return $response;
+  }
+
+  /**
    * internal function, loads an existing story (if exists) throws an exception otherwise
    * @param $id
    * @return \Agile\NimbleBoardBundle\Entity\Story
