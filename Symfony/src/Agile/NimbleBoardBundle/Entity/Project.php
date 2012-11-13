@@ -70,6 +70,12 @@ class Project
      */
     private $stories;
 
+    /**
+     * @var $sprints
+     *
+     * @ORM\OneToMany(targetEntity="Sprint", mappedBy="project")
+     */
+    private $sprints;
 
     /**
      * Get id
@@ -229,7 +235,7 @@ class Project
     /**
      * Add stories
      *
-     * @param Agile\NimbleBoardBundle\Entity\Story $stories
+     * @param \Agile\NimbleBoardBundle\Entity\Story $stories
      * @return Project
      */
     public function addStorie(\Agile\NimbleBoardBundle\Entity\Story $stories)
@@ -242,7 +248,7 @@ class Project
     /**
      * Remove stories
      *
-     * @param Agile\NimbleBoardBundle\Entity\Story $stories
+     * @param \Agile\NimbleBoardBundle\Entity\Story $stories
      */
     public function removeStorie(\Agile\NimbleBoardBundle\Entity\Story $stories)
     {
@@ -252,10 +258,43 @@ class Project
     /**
      * Get stories
      *
-     * @return Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getStories()
     {
         return $this->stories;
+    }
+
+    /**
+     * Add sprints
+     *
+     * @param \Agile\NimbleBoardBundle\Entity\Sprint $sprints
+     * @return Project
+     */
+    public function addSprint(\Agile\NimbleBoardBundle\Entity\Sprint $sprints)
+    {
+        $this->sprints[] = $sprints;
+    
+        return $this;
+    }
+
+    /**
+     * Remove sprints
+     *
+     * @param \Agile\NimbleBoardBundle\Entity\Sprint $sprints
+     */
+    public function removeSprint(\Agile\NimbleBoardBundle\Entity\Sprint $sprints)
+    {
+        $this->sprints->removeElement($sprints);
+    }
+
+    /**
+     * Get sprints
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSprints()
+    {
+        return $this->sprints;
     }
 }

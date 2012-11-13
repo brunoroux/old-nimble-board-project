@@ -1,0 +1,27 @@
+{% extends 'NimbleBoardBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>{% trans %}sprint.add{% endtrans %}</h1>
+  <form action="{{ formAction }}" method="POST" id="sprint_form">
+    <div class="form_errors">
+      {{ form_errors(form.number) }}
+      {{ form_errors(form.week) }}
+      {{ form_errors(form) }}
+    </div>
+    <fieldset>
+      <div>
+        {{ form_label(form.number) }}
+        {{ form_widget(form.number) }}
+      </div>
+      <div>
+        {{ form_label(form.week) }}
+        {{ form_widget(form.week) }}
+      </div>
+    </fieldset>
+    {{ form_widget(form) }}
+    <div>
+      <a href="javascript:document.getElementById('sprint_form').submit();" class="button"><img src="{{ asset('bundles/nimbleboard/images/save.png') }}" alt="{% trans %}form.submit{% endtrans %}" /> {% trans %}form.submit{% endtrans %}</a>
+      <a href="{{ path('_sprintList', {projectId: project.id}) }}" class="button space_button"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}form.cancel{% endtrans %}</a>
+    </div>
+  </form>
+{% endblock %}

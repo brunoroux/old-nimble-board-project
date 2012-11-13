@@ -1,0 +1,10 @@
+{% extends 'NimbleBoardBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>{% trans %}sprint.deleteConfirm{% endtrans %}</h1>
+
+  <div class="links centered">
+    <a class="button" href="{{ path('_sprintDeleteConfirm', {id: sprint.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
+    <a class="button space_button" href="{{ path('_sprintList', {projectId: sprint.project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/cancel.png') }}" alt="{% trans %}form.cancel{% endtrans %}" /> {% trans %}cancel{% endtrans %}</a>
+  </div>
+{% endblock %}

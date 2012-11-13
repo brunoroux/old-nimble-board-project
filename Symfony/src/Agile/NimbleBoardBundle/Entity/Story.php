@@ -106,12 +106,20 @@ class Story
     private $posY;
 
     /**
-     * @var Agile\NimbleBoardBundle\Entity\Project $project
+     * @var \Agile\NimbleBoardBundle\Entity\Project $project
      *
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="stories")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     private $project;
+
+    /**
+     * @var \Agile\NimbleBoardBundle\Entity\Sprint $sprint
+     *
+     * @ORM\ManyToOne(targetEntity="Sprint", inversedBy="stories")
+     * @ORM\JoinColumn(name="sprint_id", referencedColumnName="id")
+     */
+    private $sprint;
 
     /**
      * Get id
@@ -402,7 +410,7 @@ class Story
     /**
      * Set project
      *
-     * @param Agile\NimbleBoardBundle\Entity\Project $project
+     * @param \Agile\NimbleBoardBundle\Entity\Project $project
      * @return Story
      */
     public function setProject(\Agile\NimbleBoardBundle\Entity\Project $project = null)
@@ -415,10 +423,33 @@ class Story
     /**
      * Get project
      *
-     * @return Agile\NimbleBoardBundle\Entity\Project 
+     * @return \Agile\NimbleBoardBundle\Entity\Project
      */
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set sprint
+     *
+     * @param \Agile\NimbleBoardBundle\Entity\Sprint $sprint
+     * @return Story
+     */
+    public function setSprint(\Agile\NimbleBoardBundle\Entity\Sprint $sprint = null)
+    {
+        $this->sprint = $sprint;
+    
+        return $this;
+    }
+
+    /**
+     * Get sprint
+     *
+     * @return \Agile\NimbleBoardBundle\Entity\Sprint
+     */
+    public function getSprint()
+    {
+        return $this->sprint;
     }
 }

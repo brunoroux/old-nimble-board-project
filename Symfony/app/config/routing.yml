@@ -8,7 +8,7 @@ _home:
     defaults: { _controller: NimbleBoardBundle:Project:list }
 
 _productBacklog:
-  pattern: /project/{projectId}/product_backlog
+  pattern: /project/{projectId}/backlog
   defaults: { _controller: NimbleBoardBundle:Story:listStories }
 
 _storyAdd:
@@ -50,3 +50,35 @@ _projectDelete:
 _projectDeleteConfirm:
   pattern: /project/delete/{id}/confirm
   defaults: { _controller: NimbleBoardBundle:Project:delete, confirm: true }
+
+_sprintAdd:
+  pattern: /project/{projectId}/sprint/add
+  defaults: { _controller: NimbleBoardBundle:Sprint:addOrEdit }
+
+_sprintList:
+  pattern: /project/{projectId}/sprints
+  defaults: { _controller: NimbleBoardBundle:Sprint:list }
+
+_sprintBacklog:
+  pattern: /sprint/{id}/backlog
+  defaults: { _controller: NimbleBoardBundle:Sprint:backlog }
+
+_sprintEdit:
+  pattern: /sprint/edit/{id}
+  defaults: { _controller: NimbleBoardBundle:Sprint:addOrEdit }
+
+_sprintDelete:
+  pattern: /sprint/delete/{id}
+  defaults: { _controller: NimbleBoardBundle:Sprint:delete, confirm: false}
+
+_sprintDeleteConfirm:
+  pattern: /sprint/delete/{id}/confirm
+  defaults: { _controller: NimbleBoardBundle:Sprint:delete, confirm: true }
+
+_sprintAddStories:
+  pattern: /sprint/{id}/addstories
+  defaults: { _controller: NimbleBoardBundle:Sprint:addStories }
+
+_sprintAddStory:
+  pattern: /sprint/addStory
+  defaults: { _controller: NimbleBoardBundle:Sprint:addStory }

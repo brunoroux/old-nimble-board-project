@@ -1,0 +1,23 @@
+{% if useposition == true and (story.posX != '' or story.posY != '') %}
+  {% set style = 'position:relative;left:' ~ story.posX ~ 'px;top:' ~ story.posY ~ 'px;' %}
+{% else %}
+  {% set style = 'margin-left: 2em; margin-bottom: 2em;' %}
+{% endif %}
+<div class="story" style="{{ style }}" id="story_{{ story.id }}">
+  <p class="text">
+    {% trans %}story.asa{% endtrans %} {{ story.textAsA }}<br />
+    {% trans %}story.iwant{% endtrans %} {{ story.textIWant }}<br />
+    {% trans %}story.for{% endtrans %} {{ story.textFor }}
+  </p>
+  <p class="acceptance">
+    {% trans %}story.acceptance{% endtrans %} : {{ story.acceptance }}
+  </p>
+  {% if story.complexity != '' %}
+    <span class="complexity">{% trans %}story.complexity{% endtrans %} : {{ story.complexity }}</span>
+  {% endif %}
+  {% if story.importance != '' %}
+    <span class="importance">{% trans %}story.importance{% endtrans %} : {{ story.importance }}</span><br />
+  {% endif %}
+  <a class="button edit_story" href="{{ path('_storyEdit', {id: story.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/edit.png') }}" alt="{% trans %}edit{% endtrans %}" /> {% trans %}edit{% endtrans %}</a>
+  <a class="button delete_story space_button" href="{{ path('_storyDelete', {id: story.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
+</div>

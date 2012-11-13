@@ -25,4 +25,18 @@ class ProjectRepository extends EntityRepository
       return null;
     }
   }
+
+  public function findOneByIdJoinedToSprints($id)
+  {
+    $query = $this->getEntityManager()->createQuery('
+      select p, sp from NimbleBoardBundle:Project p
+      left join p.sprints sp
+      where p.id = :id
+    ')->setParameter('id', $id);
+    try {
+      return $query->getSingleResult();
+    } catch (\Doctrine\ORM\NoResultException $e) {
+      return null;
+    }
+  }
 }

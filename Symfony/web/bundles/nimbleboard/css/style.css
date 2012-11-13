@@ -202,9 +202,16 @@ form div div select
 }
 
 form #form_complexity,
-form #form_importance
+form #form_importance,
+form #form_number,
+form #form_week
 {
   width: 50px;
+}
+
+#sprint_form label
+{
+  width: 130px;
 }
 
 form input[type=submit],
@@ -263,7 +270,7 @@ form fieldset
 .story
 {
   float: left;
-  width: 20%;
+  width: 240px;
   border: 1px solid #999999;
   background: #fff891;
   padding: 0.5em;
@@ -379,4 +386,51 @@ form label
 .project .end
 {
   margin-left: 0.5em;
+}
+
+.sprint_backlog
+{
+  margin: 0 2em 1em 2em;
+}
+
+.sprint
+{
+  padding: 0.5em;
+}
+
+.odd
+{
+  background: #cccccc;
+}
+
+#stories_sprint_drag
+{
+  float: left;
+}
+
+#stories_sprint_drag .backlog_container
+{
+  float: left;
+  width: 49%;
+}
+
+#stories_sprint_drag .title
+{
+  float: left;
+  width: 100%;
+}
+
+#stories_sprint_drag .title h2
+{
+  margin-left: 2em;
+}
+
+#stories_sprint_drag .product_backlog,
+#stories_sprint_drag .sprint_backlog
+{
+  float: left;
+  width: 95%;
+  min-height: 600px;
+  margin: 0 0 2em 2em;
+  border: 1px dashed #666666;
 }

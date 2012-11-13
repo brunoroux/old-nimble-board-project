@@ -1,0 +1,19 @@
+{% extends 'NimbleBoardBundle::layout.html.twig' %}
+
+{% block content %}
+  <h1>{% trans %}sprint.list{% endtrans %}</h1>
+  <div class="links">
+    <a class="button" href="{{ path('_sprintAdd', {'projectId': project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}sprint.add{% endtrans %}" /> {% trans %}sprint.add{% endtrans %}</a>
+  </div>
+  <div class="sprint_backlog">
+    {% set i = 1 %}
+    {% for sprint in project.sprints %}
+      <div class="sprint {{ cycle(['odd', 'even'], i) }}">
+        <a href="{{ path('_sprintBacklog', {id: sprint.id}) }}">{% trans with {'%number%': sprint.number, '%week%': sprint.week} %}sprint.numberFromWeek{% endtrans %}</a>
+        <a class="button space_button" href="{{ path('_sprintEdit', {id: sprint.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/edit.png') }}" alt="{% trans %}edit{% endtrans %}" /> {% trans %}edit{% endtrans %}</a>
+        <a class="button space_button" href="{{ path('_sprintDelete', {id: sprint.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
+      </div>
+      {% set i = i + 1 %}
+    {% endfor %}
+  </div>
+{% endblock %}

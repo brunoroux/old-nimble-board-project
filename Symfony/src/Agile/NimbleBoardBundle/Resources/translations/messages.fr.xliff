@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="1">
+        <source>Welcome.msg</source>
+        <target>Bienvenue dans Nimble Board</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>notice</source>
+        <target>Information</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Product.backlog</source>
+        <target>Product backlog</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>story.asa</source>
+        <target>En tant que</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>story.iwant</source>
+        <target>Je veux</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>story.for</source>
+        <target>Pour</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>story.complexity</source>
+        <target>Complexité</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>story.importance</source>
+        <target>Importance</target>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>story.acceptance</source>
+        <target>Acceptation</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>story.add</source>
+        <target>Ajouter une story</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>story.saved</source>
+        <target>Story enregistrée</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>form.submit</source>
+        <target>Enregistrer</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>edit</source>
+        <target>Modifier</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>storystatus.todo</source>
+        <target>A Faire</target>
+      </trans-unit>
+      <trans-unit id="15">
+        <source>storystatus.inprogress</source>
+        <target>En Cours</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>storystatus.done</source>
+        <target>Fait</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>error.integerNeeded</source>
+        <target>%fieldName% doit être un nombre</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>form.cancel</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>story.deleted</source>
+        <target>La story a été supprimée</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>story.deleteConfirm</source>
+        <target>Etes-vous sur de vouloir supprimer cette story ?</target>
+      </trans-unit>
+      <trans-unit id="22">
+        <source>productBacklog.globalComplexity</source>
+        <target>Complexité globale du Product backlog</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>project.list</source>
+        <target>Liste des projets</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>project.add</source>
+        <target>Ajouter un projet</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>project.name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="26">
+        <source>project.description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>project.start</source>
+        <target>Date de début</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>project.end</source>
+        <target>Date de fin</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>project.saved</source>
+        <target>Projet enregistré</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>project.deleteConfirm</source>
+        <target>Etes-vous sur de vouloir supprimer ce projet ?</target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>project.deleted</source>
+        <target>Le projet a été supprimé</target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>sprint.add</source>
+        <target>Ajouter un sprint</target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>sprint.number</source>
+        <target>Numéro du sprint</target>
+      </trans-unit>
+      <trans-unit id="34">
+        <source>sprint.week</source>
+        <target>Numéro de semaine</target>
+      </trans-unit>
+      <trans-unit id="35">
+        <source>sprint.saved</source>
+        <target>Sprint enregistré</target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>sprint.list</source>
+        <target>Liste des sprints</target>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>sprint.numberFromWeek</source>
+        <target>Sprint n° %number% de la semaine %week%</target>
+      </trans-unit>
+      <trans-unit id="38">
+        <source>sprint.deleteConfirm</source>
+        <target>Etes-vous sur de vouloir supprimer ce sprint ?</target>
+      </trans-unit>
+      <trans-unit id="39">
+        <source>sprint.deleted</source>
+        <target>Le sprint a été supprimé</target>
+      </trans-unit>
+      <trans-unit id="40">
+        <source>sprint.backlog</source>
+        <target>Sprint backlog</target>
+      </trans-unit>
+      <trans-unit id="41">
+        <source>sprint.addStories</source>
+        <target>Ajouter des stories à ce sprint</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
