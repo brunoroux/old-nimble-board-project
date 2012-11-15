@@ -3,7 +3,8 @@
 {% block content %}
   <h1>{% trans %}Product.backlog{% endtrans %}</h1>
   <div class="links">
-    <a class="button" href="{{ path('_storyAdd', {projectId: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}story.add{% endtrans %}" /> {% trans %}story.add{% endtrans %}</a>
+    <a class="button" href="{{ path('_projectList') }}"><img src="{{ asset('bundles/nimbleboard/images/list.png') }}" alt="{% trans %}project.list{% endtrans %}" /> {% trans %}project.list{% endtrans %}</a>
+    <a class="button space_button" href="{{ path('_storyAdd', {projectId: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}story.add{% endtrans %}" /> {% trans %}story.add{% endtrans %}</a>
     <a class="button space_button" href="{{ path('_sprintAdd', {projectId: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}sprint.add{% endtrans %}" /> {% trans %}sprint.add{% endtrans %}</a>
     <a class="button space_button" href="{{ path('_sprintList', {projectId: project.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/list.png') }}" alt="{% trans %}sprint.list{% endtrans %}" /> {% trans %}sprint.list{% endtrans %}</a>
   </div>
