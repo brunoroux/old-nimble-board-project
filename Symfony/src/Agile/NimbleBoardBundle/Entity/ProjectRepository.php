@@ -32,6 +32,7 @@ class ProjectRepository extends EntityRepository
       select p, sp from NimbleBoardBundle:Project p
       left join p.sprints sp
       where p.id = :id
+      order by sp.id desc
     ')->setParameter('id', $id);
     try {
       return $query->getSingleResult();
