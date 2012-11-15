@@ -8,6 +8,7 @@ use Agile\NimbleBoardBundle\Entity\Project;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Agile\NimbleBoardBundle\Constants\StoryStatus;
 
 class StoryController extends Controller
 {
@@ -80,6 +81,9 @@ class StoryController extends Controller
           $story->setCreated($now);
         }
         $story->setChanged($now);
+        if ($story->getStatus() === null) {
+          $story->setStatus(StoryStatus::STATUS_TODO);
+        }
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($story);
