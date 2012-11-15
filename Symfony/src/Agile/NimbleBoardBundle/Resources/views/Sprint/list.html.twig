@@ -11,6 +11,7 @@
     {% for sprint in project.sprints %}
       <div class="sprint {{ cycle(['odd', 'even'], i) }}">
         <a href="{{ path('_sprintBacklog', {id: sprint.id}) }}">{% trans with {'%number%': sprint.number, '%week%': sprint.week} %}sprint.numberFromWeek{% endtrans %}</a>
+        <a class="button space_button" href="{{ path('_sprintAddStories', {id: sprint.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/add.png') }}" alt="{% trans %}sprint.add{% endtrans %}" /> {% trans %}sprint.addStories{% endtrans %}</a>
         <a class="button space_button" href="{{ path('_sprintEdit', {id: sprint.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/edit.png') }}" alt="{% trans %}edit{% endtrans %}" /> {% trans %}edit{% endtrans %}</a>
         <a class="button space_button" href="{{ path('_sprintDelete', {id: sprint.id}) }}"><img src="{{ asset('bundles/nimbleboard/images/delete.png') }}" alt="{% trans %}delete{% endtrans %}" /> {% trans %}delete{% endtrans %}</a>
       </div>
