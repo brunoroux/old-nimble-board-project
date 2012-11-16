@@ -18,7 +18,8 @@ class StoryController extends Controller
   public function listStoriesAction($projectId)
   {
     $stories = $this->getDoctrine()->getRepository('NimbleBoardBundle:Story')->findByProjectWithoutSprint($projectId);
-    $project = $stories[0]->getProject();
+    // Load the project apart from stories as there may not be any story in the project yet
+    $project = $this->getDoctrine()->getRepository('NimbleBoardBundle:Project')->find($projectId);
     $globalComplexity = $this->getComplexitySum($stories);
     if ($this->hasPositionedStories($stories)) {
       $minheight = $this->getMaxStoryOffset($stories) + 300;
